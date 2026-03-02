@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaam Elite Deployer | High Performance</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #00f5ff;
+            --secondary: #9d00ff;
+            --bg: #030305;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 6%;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .logo-brand {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Hero Image 16:9 --- */
+        .hero-section {
+            width: 90%;
+            max-width: 550px;
+            aspect-ratio: 16 / 9;
+            margin-top: 5px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-section img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Container & Card --- */
+        .container {
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 22px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        /* --- Rocket SVG --- */
+        .rocket-box { display: flex; justify-content: center; margin-bottom: 12px; }
+        .rocket-svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary);
+            filter: drop-shadow(0 0 8px var(--primary));
+            animation: rocketFloat 3s ease-in-out infinite;
+        }
+
+        h2 { text-align: center; font-size: 18px; margin-bottom: 15px; font-weight: 800; letter-spacing: 0.5px; }
+
+        /* --- Form Elements --- */
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: white;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .upload-area {
+            width: 100%;
+            height: 120px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.01);
+            margin-bottom: 18px;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover { border-color: var(--primary); background: rgba(0, 245, 255, 0.02); }
+
+        .file-svg { width: 32px; height: 32px; fill: var(--primary); margin-bottom: 8px; }
+        .upload-area p { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+
+        /* --- Deploy Button --- */
+        .btn-deploy {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-deploy:active { transform: scale(0.98); }
+
+        /* --- Status Result --- */
+        #result {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            min-height: 20px;
+        }
+
+        #result a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes rocketFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        footer { padding: 15px; font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-brand">ZAAM ELITE</div>
+        <div style="opacity: 0.5; font-size: 9px;">SaaS CLOUD v4.1</div>
+    </header>
+
+    <div class="hero-section">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Tech Banner">
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="rocket-box">
+                <svg class="rocket-svg" viewBox="0 0 24 24">
+                    <path d="M12,2.5s-4.5,4.5-4.5,10c0,2.5,1.5,4.5,1.5,4.5h6s1.5-2,1.5-4.5C16.5,7,12,2.5,12,2.5z M9,18.5s-2,1.5-2,3.5h10 c0-2-2-3.5-2-3.5H9z"/>
+                </svg>
+            </div>
+
+            <h2>One Page Deploy</h2>
+
+            <input type="text" id="projectName" placeholder="Nama Project">
+
+            <label class="upload-area" for="fileInput">
+                <svg class="file-svg" viewBox="0 0 24 24">
+                    <path d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z M13,9V3.5L18.5,9H13z"/>
+                </svg>
+                <p>UNGGAH .ZIP / .HTML</p>
+                <div id="fileStatus" style="font-size: 9px; color: var(--primary); margin-top: 5px; font-weight: bold;"></div>
+            </label>
+
+            <input type="file" id="fileInput" accept=".zip,.html" hidden>
+
+            <button class="btn-deploy" onclick="handleDeploy()">🚀 DEPLOY SEKARANG</button>
+            
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 ZAAM PREMIUM</footer>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileStatus = document.getElementById('fileStatus');
+
+        // Update teks saat file dipilih
+        fileInput.addEventListener('change', function() {
+            if(this.files[0]) {
+                fileStatus.innerText = "FILE: " + this.files[0].name;
+            }
+        });
+
+        // LOGIKA JS YANG DIMINTA
+        async function handleDeploy() {
+            const name = document.getElementById('projectName').value;
+            const file = fileInput.files[0];
+
+            if (!name || !file) {
+                document.getElementById('result').innerHTML = "<span style='color:#ff4d79'>Lengkapi data!</span>";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("file", file);
+
+            document.getElementById('result').innerHTML = "<i class='fas fa-sync fa-spin'></i> Deploying...";
+
+            try {
+                const res = await fetch("/api/deploy", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('result').innerHTML =
+                        `🚀 Live: <a href="${data.url}" target="_blank">${data.url}</a>`;
+                } else {
+                    document.getElementById('result').innerHTML = "<span style='color:#ff4d79'>Error!</span>";
+                }
+
+            } catch (err) {
+                document.getElementById('result').innerHTML = "<span style='color:#ff4d79'>Server Error!</span>";
+            }
+        }
+    </script>
+</body>
+</html>
