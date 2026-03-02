@@ -2,22 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/deploy.js",
+      "src": "deploy.js",
       "use": "@vercel/node"
     },
     {
-      "src": "public/**",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/deploy",
-      "dest": "api/deploy.js"
+      "dest": "deploy.js"
     },
     {
       "src": "/(.*)",
-      "dest": "public/$1"
+      "dest": "index.html"
     }
   ]
 }
