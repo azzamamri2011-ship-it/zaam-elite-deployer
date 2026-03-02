@@ -1,8 +1,6 @@
 {
-  "name": "zaam-elite-deployer",
-  "type": "module",
   "dependencies": {
-    "formidable": "^3.5.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^2.6.7",
+    "formidable": "^2.0.1"
   }
 }
